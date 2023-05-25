@@ -1,0 +1,115 @@
+consistent augment lr ccc db ls
+mean acc 0.672269
+mean f1 0.638406
+acc_stdev 0.050489
+fms_stdev 0.132662
+acc
+[0.7120000000000001, 0.664, 0.5930769230769231, 0.7200000000000001]
+f1
+[0.7990799468198848, 0.7277161365102215, 0.5651794871794873, 0.46165011459129107]
+#####################
+consistent augment svm ccc db ls
+
+mean acc 0.648173
+mean f1 0.634590
+acc_stdev 0.075859
+fms_stdev 0.030702
+acc
+[0.584, 0.6000000000000001, 0.6326923076923077, 0.776]
+f1
+[0.6786692003460637, 0.6445328864683703, 0.619187808693056, 0.5959706959706959]
+
+
+#################################
+consistent joint lr ccc db ls
+
+
+mean acc 0.654090
+mean f1 0.586987
+acc_stdev 0.077334
+fms_stdev 0.182627
+acc
+[0.768, 0.6000000000000001, 0.5683589743589743, 0.68]
+f1
+[0.8421367521367522, 0.6518829754123872, 0.5072256728778467, 0.3467032967032967]
+
+###############
+consistent joint svm ccc db ls
+
+mean acc 0.603853
+mean f1 0.412261
+acc_stdev 0.084429
+fms_stdev 0.201901
+acc
+[0.632, 0.488, 0.5754102564102563, 0.7200000000000001]
+f1
+[0.7353535353535353, 0.4059928477319782, 0.31880952380952376, 0.18888888888888888]
+###################
+eq joint svm ccc db ls
+
+
+{'acc': array([0.66666667, 0.58333333, 0.45833333, 0.68      , 0.52173913]),
+'fms': array([0.5       , 0.44444444, 0.        , 0.55555556, 0.35294118])}
+{'acc': 0.5820144927536232, 'fms': 0.37058823529411766, 'acc_stdev': 0.08449738222835461, 'fms_stdev': 0.1970086865407585}
+###################
+
+eq joint lr ccc db ls
+
+{'acc': array([0.66666667, 0.70833333, 0.45833333, 0.68      , 0.60869565]), 'fms': array([0.69230769, 0.66666667, 0.31578947, 0.66666667, 0.60869565])}
+{'acc': 0.6244057971014493, 'fms': 0.5900252302998299, 'acc_stdev': 0.08915985610794147, 'fms_stdev': 0.13983086671449269}
+
+###################
+
+eq augment lr ccc db ls
+result for method augment param 1.000000 nest 45 source ['ccc'] target ['pitt']
+{'acc': array([0.70833333, 0.66666667, 0.58333333, 0.72      , 0.52173913]),
+'fms': array([0.74074074, 0.63636364, 0.5       , 0.72      , 0.56      ])}
+{'acc': 0.6400144927536233, 'fms': 0.6314208754208754, 'acc_stdev': 0.07612791720096969, 'fms_stdev': 0.09186284678015189}
+
+###################
+
+eq augment svm ccc db ls
+
+result for method augment param 1.000000 nest 45 source ['ccc'] target ['pitt']
+{'acc': array([0.79166667, 0.625     , 0.66666667, 0.64      , 0.52173913]),
+'fms': array([0.8       , 0.57142857, 0.66666667, 0.64      , 0.52173913])}
+{'acc': 0.6490144927536232, 'fms': 0.6399668737060041, 'acc_stdev': 0.08662357272842608, 'fms_stdev': 0.09486704349878543}
+#####################
+t test
+#############################
+
+consistent_augment_lr
+aug
+acc
+greater
+WilcoxonResult(statistic=7.0, pvalue=0.3125)
+f1
+greater
+WilcoxonResult(statistic=9.0, pvalue=0.125)
+#######################
+
+consistent_augment_svm
+aug
+acc
+greater
+TtestResult(statistic=1.3259079276778734, pvalue=0.13839301298057735, df=3)
+WilcoxonResult(statistic=9.0, pvalue=0.125)
+f1
+greater
+TtestResult(statistic=2.238861476842029, pvalue=0.05553941474205095, df=3)
+WilcoxonResult(statistic=9.0, pvalue=0.125)
+
+##################
+
+equal_augment_lr
+aug
+acc
+greater
+TtestResult(statistic=0.4244966399012211, pvalue=0.3465201301290599, df=4)
+WilcoxonResult(statistic=8.5, pvalue=0.5)
+f1
+greater
+TtestResult(statistic=1.0062842957321418, pvalue=0.18560571554626623, df=4)
+WilcoxonResult(statistic=11.0, pvalue=0.21875)
+
+######################

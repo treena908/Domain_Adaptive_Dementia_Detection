@@ -1,0 +1,63 @@
+,,,s_feature,s_weight
+0,,,NP_to_PRP (participant),0.150055657
+1,,,BrunetIndex,0.137656057
+2,,,# PART (participant),0.12187334
+3,,,# AUX (participant),0.116587123
+4,,,MTLD (participant),0.10196985
+5,,,Maas (participant),0.099995643
+6,,,AvgNPTypeLengthEmbedded,0.09889291
+7,,,AvgVPTypeLengthEmbedded,0.094861199
+8,,,# named entities (participant),0.0877611
+9,,,# tokens (participant),0.086501581
+10,,,# ADJ (participant),0.085113096
+11,,,# INTJ (participant),0.076048622
+12,,,TTR (participant),0.072046645
+13,,,MSTTR (participant),0.070796152
+14,,,PProportion,0.0631812
+15,,,RatioCoordinate,0.062441795
+16,,,# utterances (participant),0.061295289
+17,,,proportion_below_threshold_0.5,0.056807452
+18,,,avg_cos_dist,0.045064104
+19,,,VPProportion,0.041086077
+20,,,# ADV (participant),0.040485282
+21,,,VPTypeRate,0.034037883
+22,,,# unique lemmas (participant),0.032835009
+23,,,NPProportion,0.023707431
+24,,,tree_height (participant),0.018090396
+25,,,# DET (participant),0.010151389
+26,,,# ADP (participant),0.009786349
+27,,,ROOT_to_FRAG (participant),0.009419187
+28,,,# CCONJ (participant),0.001707789
+29,,,# CARDINAL (participant),-0.0026724
+30,,,# NUM (participant),-0.004889991
+31,,,RatioPronoun,-0.009868406
+32,,,RatioNoun,-0.012919211
+33,,,RatioVerb,-0.021230491
+34,,,# PROPN (participant),-0.022558537
+35,,,proportion_below_threshold_0.3,-0.022913779
+36,,,HonoreStatistic,-0.025678962
+37,,,INTJ_to_UH (participant),-0.033076863
+38,,,PPTypeRate,-0.035726484
+39,,,HD-D (participant),-0.037858867
+40,,,# NOUN (participant),-0.042836488
+41,,,proportion_below_threshold_0,-0.04449143
+42,,,# VERB (participant),-0.050185568
+43,,,NPTypeRate,-0.051237334
+44,,,AvgNPTypeLengthNonEmbedded,-0.05218909
+45,,,VP_to_VBG (participant),-0.056509036
+46,,,VP_to_AUX_ADJP (participant),-0.057193967
+47,,,# PUNCT (participant),-0.057818477
+48,,,DisfluencyFrequency,-0.059485637
+49,,,VP_to_AUX_VP (participant),-0.06060328
+50,,,AvgPPTypeLengthNonEmbedded,-0.06060782
+51,,,AvgVPTypeLengthNonEmbedded,-0.062379181
+52,,,# SCONJ (participant),-0.064121895
+53,,,AvgPPTypeLengthEmbedded,-0.069065449
+54,,,VP_to_AUX (participant),-0.074218536
+55,,,# PRON (participant),-0.078196348
+56,,,# unique tokens (participant),-0.083074289
+57,,,NP_to_DT_NN (participant),-0.093046622
+58,,,MeanWordLength,-0.099582571
+59,,,MATTR (participant),-0.102788847
+60,,,# unique named entities (participant),-0.128763581
+61,,,SUBTLscore (participant),-0.130087923

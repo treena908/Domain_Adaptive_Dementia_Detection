@@ -1,0 +1,59 @@
+,joint_feature,weight
+30,NP_to_PRP (participant),1.077211117
+7,# AUX (participant),0.597887109
+38,BrunetIndex,0.536455123
+22,TTR (participant),0.493726944
+25,Maas (participant),0.480055705
+13,# PART (participant),0.47049086
+1,# tokens (participant),0.422387875
+51,VPProportion,0.421741209
+26,MTLD (participant),0.420181477
+49,PProportion,0.40901058
+52,AvgNPTypeLengthEmbedded,0.4048346
+4,# ADJ (participant),0.334468857
+53,AvgVPTypeLengthEmbedded,0.33296248
+19,# named entities (participant),0.329096129
+10,# INTJ (participant),0.314725191
+45,RatioCoordinate,0.312390768
+23,MSTTR (participant),0.247904457
+6,# ADV (participant),0.204104334
+47,VPTypeRate,0.101896922
+5,# ADP (participant),0.085352418
+15,# PROPN (participant),0.060492704
+34,ROOT_to_FRAG (participant),0.040153845
+42,RatioNoun,0.035525753
+50,NPProportion,0.012627812
+21,# CARDINAL (participant),0.011518536
+9,# DET (participant),0.005800113
+0,# utterances (participant),-0.005332357
+11,# NOUN (participant),-0.011138461
+33,INTJ_to_UH (participant),-0.021655557
+12,# NUM (participant),-0.028270142
+8,# CCONJ (participant),-0.042787009
+3,# unique lemmas (participant),-0.055879567
+29,tree_height (participant),-0.100629947
+39,HonoreStatistic,-0.105647104
+56,AvgNPTypeLengthNonEmbedded,-0.12648947
+18,# VERB (participant),-0.170467295
+27,HD-D (participant),-0.170891641
+44,RatioPronoun,-0.177860377
+48,PPTypeRate,-0.185036792
+16,# PUNCT (participant),-0.186311165
+43,RatioVerb,-0.209111124
+41,DisfluencyFrequency,-0.22604954
+35,VP_to_AUX_VP (participant),-0.232955554
+36,VP_to_AUX_ADJP (participant),-0.238696962
+17,# SCONJ (participant),-0.243175055
+32,VP_to_VBG (participant),-0.244267196
+46,NPTypeRate,-0.255525624
+55,AvgPPTypeLengthNonEmbedded,-0.268231123
+40,MeanWordLength,-0.280158379
+54,AvgPPTypeLengthEmbedded,-0.287154894
+31,NP_to_DT_NN (participant),-0.298816118
+57,AvgVPTypeLengthNonEmbedded,-0.329671857
+14,# PRON (participant),-0.384958157
+24,MATTR (participant),-0.445847544
+37,VP_to_AUX (participant),-0.456805319
+28,SUBTLscore (participant),-0.493202582
+20,# unique named entities (participant),-0.500747897
+2,# unique tokens (participant),-0.539116927

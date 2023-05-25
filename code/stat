@@ -1,0 +1,375 @@
+augment_ccc_db_svm
+l
+acc
+greater
+TtestResult(statistic=1.1672034734115613, pvalue=0.15398141315952762, df=4)
+fms
+greater
+TtestResult(statistic=2.653768268989025, pvalue=0.028379044464640502, df=4)
+ls
+acc
+greater
+TtestResult(statistic=1.0649936044282298, pvalue=0.17344799120727392, df=4)
+fms
+greater
+TtestResult(statistic=2.734319083719891, pvalue=0.026105027756550606, df=4)
+lsa
+acc
+greater
+TtestResult(statistic=1.188650838006899, pvalue=0.15016117288848224, df=4)
+fms
+greater
+TtestResult(statistic=2.9477048380838298, pvalue=0.02103263721409412, df=4)
+#########################
+augment_ccc_db_lr
+l
+acc
+less
+TtestResult(statistic=-1.6640166500389841, pvalue=0.08572069358695875, df=4)
+fms
+less
+TtestResult(statistic=-2.426869767535221, pvalue=0.03611237411862659, df=4)
+ls
+acc
+less
+TtestResult(statistic=-1.0858706544253174, pvalue=0.1692988735030745, df=4)
+fms
+less
+TtestResult(statistic=-1.469253139457535, pvalue=0.10784859968311548, df=4)
+lsa
+acc
+less
+TtestResult(statistic=-1.6329642640266913, pvalue=0.08890692609344412, df=4)
+fms
+less
+TtestResult(statistic=-2.1117594747074864, pvalue=0.0511436831878489, df=4)
+#############################
+augment_ccc_adress_svm
+ls
+acc
+greater
+TtestResult(statistic=3.329511785632915, pvalue=0.004402962392966461, df=9)
+fms
+greater
+TtestResult(statistic=5.220693301738184, pvalue=0.00027434527515326866, df=9)
+l
+acc
+greater
+TtestResult(statistic=2.4098741727768123, pvalue=0.01962856032051437, df=9)
+fms
+greater
+TtestResult(statistic=3.960041650663695, pvalue=0.0016520332104953963, df=9)
+lsa
+acc
+greater
+TtestResult(statistic=3.0907332121092077, pvalue=0.006457087913349061, df=9)
+fms
+greater
+TtestResult(statistic=5.672804465348225, pvalue=0.00015231848145570302, df=9)
+##############################
+augment_ccc_adress_lr
+ls
+acc
+less
+TtestResult(statistic=-2.7313432852279034, pvalue=0.011586769417135892, df=9)
+fms
+less
+TtestResult(statistic=-2.4336913916749734, pvalue=0.01887664148795627, df=9)
+l
+acc
+less
+TtestResult(statistic=-1.4055638569974542, pvalue=0.09671102980166614, df=9)
+fms
+less
+TtestResult(statistic=-0.6429580888387296, pvalue=0.2681431123775033, df=9)
+lsa
+acc
+less
+TtestResult(statistic=-1.1582602824857224, pvalue=0.13828430140772185, df=9)
+fms
+less
+TtestResult(statistic=-0.8067522939779139, pvalue=0.22030326494146762, df=9)
+
+
+################################
+augment_db_ccc_svm
+lsa
+acc
+greater
+TtestResult(statistic=1.7031598909971069, pvalue=0.08187376070948878, df=4)
+fms
+greater
+TtestResult(statistic=2.1879087052047446, pvalue=0.04695554447469919, df=4)
+l
+acc
+greater
+TtestResult(statistic=2.367437408576146, pvalue=0.038517856945817046, df=4)
+fms
+greater
+TtestResult(statistic=2.6964880966308913, pvalue=0.027145766752067157, df=4)
+ls
+acc
+greater
+TtestResult(statistic=2.566737699710733, pvalue=0.03109649380424633, df=4)
+fms
+greater
+TtestResult(statistic=2.833691513663303, pvalue=0.02358407823609422, df=4)
+####################################
+augment_db_ccc_lr
+l
+acc
+greater
+TtestResult(statistic=3.1622776601683733, pvalue=0.0170547115837049, df=4)
+fms
+greater
+TtestResult(statistic=2.6137937714693584, pvalue=0.029591829449895843, df=4)
+ls
+acc
+greater
+TtestResult(statistic=0.5897678246195898, pvalue=0.29352481989352774, df=4)
+fms
+greater
+TtestResult(statistic=0.1396707639697753, pvalue=0.44783524525245755, df=4)
+lsa
+acc
+less
+TtestResult(statistic=-1.4128208243938263, pvalue=0.11528950378265874, df=4)
+fms
+less
+TtestResult(statistic=-1.4892473954095962, pvalue=0.10532983535509502, df=4)
+###############################
+
+mult_ccc_db_lr
+l
+acc
+less
+TtestResult(statistic=-3.075814311223454, pvalue=0.01854117705185275, df=4)
+fms
+less
+TtestResult(statistic=-3.0287952539379406, pvalue=0.019413210640851136, df=4)
+ls
+acc
+less
+TtestResult(statistic=-2.3307400889426106, pvalue=0.04009352825415016, df=4)
+fms
+less
+TtestResult(statistic=-2.5131576082237315, pvalue=0.032917611027631695, df=4)
+###########################
+
+mult_ccc_db_svm
+l
+acc
+greater
+TtestResult(statistic=1.5888627315476114, pvalue=0.0936453921231176, df=4)
+fms
+greater
+TtestResult(statistic=3.340650395329479, pvalue=0.014409161330105459, df=4)
+ls
+acc
+greater
+TtestResult(statistic=1.5888627315476114, pvalue=0.0936453921231176, df=4)
+fms
+greater
+TtestResult(statistic=3.340650395329479, pvalue=0.014409161330105459, df=4)
+##########################################
+mult_ccc_adress_lr
+l
+acc
+less
+TtestResult(statistic=-0.5570860145311557, pvalue=0.29552561589180226, df=9)
+fms
+less
+TtestResult(statistic=-0.6449991084627963, pvalue=0.26751085178591283, df=9)
+ls
+acc
+less
+TtestResult(statistic=-1.8090680448532308, pvalue=0.05194406739203579, df=9)
+fms
+less
+TtestResult(statistic=-1.5560311945739196, pvalue=0.07706236583028654, df=9)
+##################################
+mult_ccc_adress_svm
+l
+acc
+greater
+TtestResult(statistic=2.924429796337189, pvalue=0.008454759374482935, df=9)
+fms
+greater
+TtestResult(statistic=5.043508336825824, pvalue=0.0003482289950272022, df=9)
+ls
+acc
+greater
+TtestResult(statistic=2.74027863386023, pvalue=0.011418580039461515, df=9)
+fms
+greater
+TtestResult(statistic=4.6497792543272825, pvalue=0.0006012455056266321, df=9)
+##################
+mult_db_ccc_lr
+ls
+acc
+greater
+TtestResult(statistic=0.5897678246195898, pvalue=0.29352481989352774, df=4)
+fms
+greater
+TtestResult(statistic=0.1396707639697753, pvalue=0.44783524525245755, df=4)
+l
+acc
+greater
+TtestResult(statistic=1.3596471412638584, pvalue=0.12276822001921198, df=4)
+fms
+greater
+TtestResult(statistic=1.0088331748835377, pvalue=0.18506269608371886, df=4)
+######################
+mult_db_ccc_svm
+ls
+acc
+greater
+TtestResult(statistic=3.5052978840159157, pvalue=0.012388527547242022, df=4)
+fms
+greater
+TtestResult(statistic=3.208987699460363, pvalue=0.016310167630433414, df=4)
+l
+acc
+greater
+TtestResult(statistic=3.5052978840159157, pvalue=0.012388527547242022, df=4)
+fms
+greater
+TtestResult(statistic=3.208987699460363, pvalue=0.016310167630433414, df=4)
+#################
+boost_ccc_db_svm
+l
+acc
+less
+TtestResult(statistic=-1.140377961451246, pvalue=0.15888675452548198, df=4)
+fms
+greater
+TtestResult(statistic=1.266844817009572, pvalue=0.13697596713684654, df=4)
+ls
+acc
+less
+TtestResult(statistic=-1.410407862833406, pvalue=0.1156188734237338, df=4)
+fms
+greater
+TtestResult(statistic=0.9808841193685975, pvalue=0.1910932649604938, df=4)
+lsa
+acc
+less
+TtestResult(statistic=-0.6833688249611206, pvalue=0.26595215120681376, df=4)
+fms
+greater
+TtestResult(statistic=1.188499451899982, pvalue=0.1501878249123398, df=4)
+##################
+boost_ccc_db_lr
+l
+acc
+less
+TtestResult(statistic=-1.901857615400663, pvalue=0.06498005563158393, df=4)
+fms
+less
+TtestResult(statistic=-1.411534839536906, pvalue=0.11546492442097053, df=4)
+ls
+acc
+less
+TtestResult(statistic=-8.730095254850262, pvalue=0.00047422052805383755, df=4)
+fms
+less
+TtestResult(statistic=-5.744200694871462, pvalue=0.002276048924461674, df=4)
+lsa
+acc
+less
+TtestResult(statistic=-4.506770091823307, pvalue=0.005383309022059883, df=4)
+fms
+less
+TtestResult(statistic=-4.356809457496852, pvalue=0.006046165275542302, df=4)
+######################
+boost_db_ccc_lr
+l
+acc
+less
+TtestResult(statistic=-1.3667759412460607, pvalue=0.12173840044345491, df=4)
+fms
+less
+TtestResult(statistic=-1.0235919584190742, pvalue=0.18194571975663565, df=4)
+ls
+acc
+less
+TtestResult(statistic=-2.012486671786346, pvalue=0.05723693100156073, df=4)
+fms
+less
+TtestResult(statistic=-1.8006391814988845, pvalue=0.0730648297120035, df=4)
+lsa
+acc
+less
+TtestResult(statistic=-2.1440067863483376, pvalue=0.04932146159499193, df=4)
+fms
+less
+TtestResult(statistic=-2.336612691552057, pvalue=0.03983655508510778, df=4)
+#####################
+boost_db_ccc_svm
+l
+acc
+greater
+TtestResult(statistic=1.9665205369470729, pvalue=0.060324751216941946, df=4)
+fms
+greater
+TtestResult(statistic=2.239094486549835, pvalue=0.04435549460516184, df=4)
+ls
+acc
+greater
+TtestResult(statistic=2.113930577844872, pvalue=0.05101868374912324, df=4)
+fms
+greater
+TtestResult(statistic=2.1293373337576535, pvalue=0.050141315292649154, df=4)
+lsa
+acc
+greater
+TtestResult(statistic=1.5145263427567184, pvalue=0.1022304844281162, df=4)
+fms
+greater
+TtestResult(statistic=1.9303833649883588, pvalue=0.06287996696111407, df=4)
+#####################
+boost_ccc_adress_lr
+l
+acc
+less
+TtestResult(statistic=-2.804158633692311, pvalue=0.010286200544756877, df=9)
+fms
+less
+TtestResult(statistic=-2.5039070354812023, pvalue=0.016822722807551458, df=9)
+ls
+acc
+less
+TtestResult(statistic=-1.5444145688317692, pvalue=0.07844286015889855, df=9)
+fms
+less
+TtestResult(statistic=-1.5131819010771153, pvalue=0.08226390141571788, df=9)
+lsa
+acc
+less
+TtestResult(statistic=-1.4530784339333638, pvalue=0.09008080808090366, df=9)
+fms
+less
+TtestResult(statistic=-0.3258168318961587, pvalue=0.37600535289272546, df=9)
+#########################
+boost_ccc_adress_svm
+l
+acc
+greater
+TtestResult(statistic=1.8707986639282226, pvalue=0.047089297604968244, df=9)
+fms
+greater
+TtestResult(statistic=2.8799425279535464, pvalue=0.009089859803896658, df=9)
+ls
+acc
+greater
+TtestResult(statistic=3.09323553563109, pvalue=0.006431056707915603, df=9)
+fms
+greater
+TtestResult(statistic=4.220015611461581, pvalue=0.0011196989468910054, df=9)
+lsa
+acc
+greater
+TtestResult(statistic=0.6041079264602516, pvalue=0.2803445957687321, df=9)
+fms
+greater
+TtestResult(statistic=1.9178973948704086, pvalue=0.043675086124993094, df=9)

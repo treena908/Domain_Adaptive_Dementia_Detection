@@ -1,0 +1,9 @@
+adresstest
+true
+augment_pred
+McNemar's test
+chi² statistic: 0.25, p-value: 0.6170750774519739
+
+mult_pred
+McNemar's test
+chi² statistic: 0.0, p-value: 1.0

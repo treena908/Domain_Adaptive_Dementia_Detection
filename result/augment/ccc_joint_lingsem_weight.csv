@@ -1,0 +1,63 @@
+﻿joint_feature,weight
+NP_to_PRP (participant),0.750278286
+BrunetIndex,0.688280283
+# PART (participant),0.6093667
+# AUX (participant),0.582935613
+MTLD (participant),0.509849248
+Maas (participant),0.499978217
+AvgNPTypeLengthEmbedded,0.494464549
+AvgVPTypeLengthEmbedded,0.474305994
+# named entities (participant),0.4388055
+# tokens (participant),0.432507906
+# ADJ (participant),0.42556548
+# INTJ (participant),0.380243108
+TTR (participant),0.360233226
+MSTTR (participant),0.353980762
+PProportion,0.315906002
+RatioCoordinate,0.312208975
+# utterances (participant),0.306476445
+proportion_below_threshold_0.5,0.284037261
+avg_cos_dist,0.225320521
+VPProportion,0.205430383
+# ADV (participant),0.20242641
+VPTypeRate,0.170189416
+# unique lemmas (participant),0.164175046
+NPProportion,0.118537154
+tree_height (participant),0.090451979
+# DET (participant),0.050756946
+# ADP (participant),0.048931746
+ROOT_to_FRAG (participant),0.047095933
+# CCONJ (participant),0.008538946
+# CARDINAL (participant),-0.013362
+# NUM (participant),-0.024449955
+RatioPronoun,-0.049342031
+RatioNoun,-0.064596056
+RatioVerb,-0.106152453
+# PROPN (participant),-0.112792686
+proportion_below_threshold_0.3,-0.114568894
+HonoreStatistic,-0.12839481
+INTJ_to_UH (participant),-0.165384317
+PPTypeRate,-0.178632422
+HD-D (participant),-0.189294337
+# NOUN (participant),-0.214182439
+proportion_below_threshold_0,-0.22245715
+# VERB (participant),-0.250927839
+NPTypeRate,-0.256186669
+AvgNPTypeLengthNonEmbedded,-0.260945449
+VP_to_VBG (participant),-0.28254518
+VP_to_AUX_ADJP (participant),-0.285969834
+# PUNCT (participant),-0.289092384
+DisfluencyFrequency,-0.297428183
+VP_to_AUX_VP (participant),-0.303016398
+AvgPPTypeLengthNonEmbedded,-0.303039101
+AvgVPTypeLengthNonEmbedded,-0.311895906
+# SCONJ (participant),-0.320609476
+AvgPPTypeLengthEmbedded,-0.345327247
+VP_to_AUX (participant),-0.37109268
+# PRON (participant),-0.390981741
+# unique tokens (participant),-0.415371447
+NP_to_DT_NN (participant),-0.465233108
+MeanWordLength,-0.497912853
+MATTR (participant),-0.513944237
+# unique named entities (participant),-0.643817905
+SUBTLscore (participant),-0.650439613

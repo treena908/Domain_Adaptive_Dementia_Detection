@@ -1,0 +1,89 @@
+t_feature,t_weight
+# utterances (participant),0.260983606
+# tokens (participant),0
+# unique tokens (participant),0
+# unique lemmas (participant),-0.325384032
+# ADJ (participant),0.281533152
+# ADP (participant),0
+# ADV (participant),0
+# AUX (participant),1.562192556
+# CCONJ (participant),0
+# DET (participant),-0.023248237
+# INTJ (participant),0
+# NOUN (participant),-0.031197118
+# NUM (participant),-0.01341063
+# PART (participant),0.837813403
+# PRON (participant),-0.207405653
+# PROPN (participant),0
+# PUNCT (participant),-0.233577991
+# SCONJ (participant),-0.538953764
+# VERB (participant),0
+# named entities (participant),0
+# unique named entities (participant),-0.051435294
+# CARDINAL (participant),-0.000622215
+TTR (participant),0
+MSTTR (participant),0
+MATTR (participant),0
+Maas (participant),0
+MTLD (participant),0.127827274
+HD-D (participant),0
+SUBTLscore (participant),-0.058516381
+tree_height (participant),0
+NP_to_PRP (participant),0
+NP_to_DT_NN (participant),-1.133210113
+VP_to_VBG (participant),-0.311245774
+INTJ_to_UH (participant),-0.143445455
+ROOT_to_FRAG (participant),-0.180033556
+VP_to_AUX_VP (participant),-0.093557866
+VP_to_AUX_ADJP (participant),-0.118207743
+VP_to_AUX (participant),-0.08398794
+BrunetIndex,1.791461608
+HonoreStatistic,-0.146059585
+MeanWordLength,0
+DisfluencyFrequency,0.407148206
+RatioNoun,0
+RatioVerb,-1.028036418
+RatioPronoun,0
+RatioCoordinate,0.260518977
+NPTypeRate,0
+VPTypeRate,0.04843394
+PPTypeRate,0.084519023
+PProportion,0
+NPProportion,0
+VPProportion,0
+AvgNPTypeLengthEmbedded,0
+AvgVPTypeLengthEmbedded,0
+AvgPPTypeLengthEmbedded,-0.21839701
+AvgPPTypeLengthNonEmbedded,0
+AvgNPTypeLengthNonEmbedded,0
+AvgVPTypeLengthNonEmbedded,-0.74048886
+avg_cos_dist,-0.086904679
+proportion_below_threshold_0,0
+proportion_below_threshold_0.3,0
+proportion_below_threshold_0.5,0
+Vrate,-0.06242809
+avgdurvoiced,-0.835751732
+stddurvoiced,-0.164170511
+skwdurvoiced,0
+kurtosisdurvoiced,0.363332807
+maxdurvoiced,0
+mindurvoiced,0.118193089
+avgdurunvoiced,0
+stddurunvoiced,0
+skwdurunvoiced,-0.258812649
+kurtosisdurunvoiced,-0.036668352
+maxdurunvoiced,0
+mindurunvoiced,0.23234213
+avgdurpause,0
+stddurpause,0.22834093
+skwdurpause,0.075440627
+kurtosisdurpause,0.089093344
+maxdurpause,0.141986671
+mindurpause,0
+PVU,-0.19814846
+PU,-0.445986692
+UVU,0.426319198
+VVU,-0.040488333
+VP,-0.018414248
+UP,1.76598618
+domid,0
