@@ -4,7 +4,11 @@ import pandas as pd
 from pos_syntactic import get_aux_dependency_dependent, get_VP_2_AUX
 Total_nodes = 0
 path='../data/'
-
+Parse
+tree
+#for a  more complex sentence.The POS categories here are sentence (S),
+# noun phrase (NP), determiner (DT), noun (NN), verb phrase (VP),
+# third person singular verb (VBZ), and gerund (VBG).
 class tree_node():
 
     def __init__(self, key, phrase=None):
@@ -265,50 +269,54 @@ def save_file(df,name):
   df.to_pickle(path+name+'.pickle')
   df.to_csv(path+name+'.csv')
   print('done')
-dbs=['ccc']
+if __name__ == '__main__':
+    dbs=['adrc']
 
-for db in dbs:
+    for db in dbs:
 
-    data={}
-
-    df = pd.read_pickle(path+db+'_parse_tree2.pickle')
-    if 'ccc' in db:
-        df_file=pd.read_pickle(path+'participant_all_ccc_transcript.pickle')
-        df['file']=df_file.index.values
-
-    for idx,row in df.iterrows():
-        # transid = str(row['filename'])
-        if len(row['parse_tree'])==0 or len(row['basic_dependencies'])==0:
-            print('parse tree or dep tree missing in file %s'%(str(row['filename'])))
-            continue
-        if 'ccc' in db:
-            transid=str(row['file'])
+        data={}
+        if 'adrc' in db:
+            df = pd.read_pickle(path + db + '_tags.pickle')
         else:
-            transid = str(row['filename'])
+            df = pd.read_pickle(path+db+'_parse_tree2.pickle')
+        if 'ccc' in db:
+            df_file=pd.read_pickle(path+'participant_all_ccc_transcript.pickle')
+            df['file']=df_file.index.values
 
-        data[transid]={}
+        for idx,row in df.iterrows():
+            # transid = str(row['filename'])
+            if len(row['parse_tree'])==0 or len(row['basic_dependencies'])==0:
+                print('parse tree or dep tree missing in file %s'%(str(row['filename'])))
+                continue
+            if 'ccc' in db or 'adrc' in db:
+                transid=str(row['filename'])
 
-        parse_tree = row
-        features = get_all_constituency_tree_features(parse_tree)  # parse tree list for all utt in the interview for the transcript
+            else:
+                transid = str(row['filename'])
 
-        for k, v in features.items():
-            data[transid][k + " (participant)"] = v  # insert cfg tree values for the particular feature for the transcript
-        # features=get_all_dependency_tree_features(row['basic_dependencies'])
-        # for k, v in features.items():
-        #     data[transid][k + " (participant)"] = v  # insert cfg tree value
-    df1=pd.DataFrame(data)
-    df1=df1.T
-    if 'ccc' in db:
-        df1['filename']=df['file']
-    else:
-        df1['filename']=df.index.values
+            data[transid]={}
 
-    save_file(df1,db+'_cfg2')
-# df_ccc=pd.read_pickle('data/ccc_cfg.pickle')
-# df_ccc=df_ccc.T
-# print(df_ccc.head(5))
-# save_file(df_ccc,'ccc_cfg')
-# df_pitt=pd.read_pickle('data/pitt_cfg.pickle')
-# df_pitt=df_pitt.T
-# print(df_pitt.head(5))
-# save_file(df_ccc,'pitt_cfg')
+            parse_tree = row
+            features = get_all_constituency_tree_features(parse_tree)  # parse tree list for all utt in the interview for the transcript
+
+            for k, v in features.items():
+                data[transid][k + " (participant)"] = v  # insert cfg tree values for the particular feature for the transcript
+            features=get_all_dependency_tree_features(row['basic_dependencies'])
+            for k, v in features.items():
+                data[transid][k + " (participant)"] = v  # insert cfg tree value
+        df1=pd.DataFrame(data)
+        df1=df1.T
+        if 'ccc' in db or 'adrc' in db:
+            df1['filename']=df['filename']
+        else:
+            df1['filename']=df.index.values
+
+        save_file(df1,db+'_cfg_4')
+    # df_ccc=pd.read_pickle('data/ccc_cfg.pickle')
+    # df_ccc=df_ccc.T
+    # print(df_ccc.head(5))
+    # save_file(df_ccc,'ccc_cfg')
+    # df_pitt=pd.read_pickle('data/pitt_cfg.pickle')
+    # df_pitt=df_pitt.T
+    # print(df_pitt.head(5))
+    # save_file(df_ccc,'pitt_cfg')

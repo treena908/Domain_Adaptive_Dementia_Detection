@@ -1,11 +1,14 @@
+#this code is adapted from: https://github.com/vmasrani/dementia_classifier/tree/master/dementia_classifier/feature_extraction
 # takes in a list of string and turns them into a list of features
 from __future__ import division
 import nltk
 from collections import defaultdict
 from collections import Counter
+
+from code_da.psycholinguistic import avg_cos_dist
 from pos_syntactic import build_tree
 import math
-from get_data import save_file
+from get_parse_tree import save_file
 import pandas as pd
 from ast import literal_eval
 
@@ -143,12 +146,21 @@ WORD TYPE COUNTS
 
 # input: NLP object for one paragraph
 # returns: number of normalized nouns in text
+def get_sum(pos_freq):
+    pos_freq['SUM'] = 0
+    for key in pos_freq:
+        pos_freq['SUM'] += pos_freq[key]
+    return pos_freq
+
+
 def getNumNouns(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
+
 
     if pos_freq['SUM'] == 0:
         return 0
+    # print(pos_freq['SUM'])
     return (pos_freq['NN'] + pos_freq['NNP'] + pos_freq['NNS'] + pos_freq['NNPS']) / pos_freq['SUM']
 
 
@@ -156,7 +168,8 @@ def getNumNouns(nlp_obj):
 # returns: number of normalized verbs in text
 def getNumVerbs(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
+
     if pos_freq['SUM'] == 0:
         return 0
     return (pos_freq['VB'] + pos_freq['VBD'] + pos_freq['VBG'] + pos_freq['VBN'] + pos_freq['VBP'] + pos_freq['VBZ']) / pos_freq['SUM']
@@ -166,7 +179,7 @@ def getNumVerbs(nlp_obj):
 # returns: number of normalized inflected verbs in text
 def getNumInflectedVerbs(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
     if pos_freq['SUM'] == 0:
         return 0
     return (pos_freq['VBD'] + pos_freq['VBG'] + pos_freq['VBN'] + pos_freq['VBP'] + pos_freq['VBZ']) / pos_freq['SUM']
@@ -177,7 +190,7 @@ def getNumInflectedVerbs(nlp_obj):
 
 def getNumDeterminers(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
     if pos_freq['SUM'] == 0:
         return 0
     return (pos_freq['DT'] + pos_freq['PDT'] + pos_freq['WDT']) / pos_freq['SUM']
@@ -187,7 +200,7 @@ def getNumDeterminers(nlp_obj):
 # returns: number of normalized adverbs in text
 def getNumAdverbs(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
     if pos_freq['SUM'] == 0:
         return 0
     return (pos_freq['RB'] + pos_freq['RBR'] + pos_freq['RBS'] + pos_freq['WRB']) / pos_freq['SUM']
@@ -197,7 +210,7 @@ def getNumAdverbs(nlp_obj):
 # returns: number of normalized adjectives in text
 def getNumAdjectives(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
     if pos_freq['SUM'] == 0:
         return 0
     return (pos_freq['JJ'] + pos_freq['JJR'] + pos_freq['JJS']) / pos_freq['SUM']
@@ -208,10 +221,10 @@ def getNumAdjectives(nlp_obj):
 
 def getNumInterjections(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
     if pos_freq['SUM'] == 0:
         return 0
-    pos_freq = nlp_obj['pos_freq']
+    # pos_freq = nlp_obj['pos_freq']
     return (pos_freq['UH']) / pos_freq['SUM']
 
 
@@ -219,7 +232,7 @@ def getNumInterjections(nlp_obj):
 # returns: number of normalized subordinate conjunctions in text
 def getNumSubordinateConjunctions(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
     if pos_freq['SUM'] == 0:
         return 0
     return (pos_freq['IN']) / pos_freq['SUM']
@@ -229,13 +242,14 @@ def getNumSubordinateConjunctions(nlp_obj):
 # returns: number of normalized coordinate conjunctions in text
 def getNumCoordinateConjunctions(nlp_obj):
 
-    pos_freq = nlp_obj
+    pos_freq = get_sum(nlp_obj)
     if pos_freq['SUM'] == 0:
         return 0
     return (pos_freq['CC']) / pos_freq['SUM']
 
 
 """
+===========================================================
 ===========================================================
 
 WORD TYPE RATIOS
@@ -680,6 +694,8 @@ def get_all(interview):
 
     # Weird statistics
     # features["TTR"] = sum([getTTR(utterance) for utterance in interview]) / len(interview)
+    # print(len(interview['parse_tree']))
+    # print(len(interview['token']))
     features["NPTypeRate"] = sum([getNPTypeRate(interview['token'][tree],interview['parse_tree'][tree]) for tree in range(len(interview['token']))]) / len(interview['token'])
     features["VPTypeRate"] = sum([getVPTypeRate(interview['token'][tree],interview['parse_tree'][tree]) for tree in range(len(interview['token']))]) / len(interview['token'])
     features["PPTypeRate"] = sum([getPPTypeRate(interview['token'][tree],interview['parse_tree'][tree])  for tree in range(len(interview['token']))]) / len(interview['token'])
@@ -705,11 +721,21 @@ def get_all(interview):
 
 # For testing
 #------------------------------------------------
-
+def get_distance_features(interview):
+    feat_dict = {}
+    a,b,c,d,e=avg_cos_dist(interview)
+    feat_dict["avg_cos_dist"] = a
+    feat_dict["min_cos_dist"] = b
+    feat_dict["proportion_below_threshold_0"] = c
+    feat_dict["proportion_below_threshold_0.3"] = d
+    feat_dict["proportion_below_threshold_0.5"] = e
+    return feat_dict
 if __name__ == '__main__':
-    dbs = ['ccc', 'pitt', 'adrc']
-    # dbs=['ccc']
-    feats = ['pos_phrases']
+    # dbs = ['ccc', 'pitt', 'adrc']
+    dbs=['adrc']
+    option=0 # option =0 for generating pos_phrases feature, option=1 for generating distance feature
+    feats = ['pos_phrases','distance'] #or pos_phrases and distance
+
     path = '../data/'
     data = {}
     for db in dbs:
@@ -747,13 +773,16 @@ if __name__ == '__main__':
 
         elif 'adrc' in db:
             if 'pos_phrases' in feats[0]:
-                df = pd.read_pickle(path + db + '_tags.pickle')
+                df = pd.read_pickle(path + db + '_tags_4.pickle')
                 file_col = 'filename'
 
             else:
-                df = pd.read_pickle(path + 'utterance_data_adrc.csv')
-                df['single_utterance'] = df['single_utterance'].apply(literal_eval)
-                utt_col = 'single_utterance'
+                # df = pd.read_pickle(path + 'utterance_data_adrc.csv')
+                colname='utt' #''single_utterance' for utterance_data_adrc
+                df = pd.read_csv(path + 'participant_utterance_adrc_4.csv')
+
+                df[colname] = df[colname].apply(literal_eval)
+                utt_col = colname
                 file_col = 'file'
 
             # interviews= df['single_utterance']
@@ -761,9 +790,12 @@ if __name__ == '__main__':
         count = 0
         for idx, row in df.iterrows():
             # distance based features
-            # feat=get_distance_features(row[utt_col])
-            # pos_phrase_feats
-            feat = get_all(row)
+            if 'pos_phrases' in feats[0]:
+                # pos_phrase_feats
+                feat = get_all(row)
+            if 'distance' in feats[0]:
+                feat=get_distance_features(row[utt_col])
+
 
 
             print('db %s file%s' % (db, str(row[file_col])))
@@ -787,9 +819,9 @@ if __name__ == '__main__':
             df1['filename']=df[file_col]
 
         if 'pos_phrases' in feats[0]:
-            save_file(df1, db + '_pos_phrases')
+            save_file(df1, db + '_pos_phrases_4')
         else:
-            save_file(df1, db + '_distance')
+            save_file(df1, db + '_distance_4')
 
 
 

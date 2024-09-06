@@ -1,3 +1,4 @@
+#this code is adapted from: https://github.com/vmasrani/dementia_classifier/tree/master/dementia_classifier/feature_extraction
 
 try:
     import cPickle as pickle
