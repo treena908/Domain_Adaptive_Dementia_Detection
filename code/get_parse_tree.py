@@ -58,14 +58,14 @@ def _processUtterance(uttr):
     nlp=get_stanford_parse() #start the parser
     # nlp = StanfordCoreNLP('http://localhost:9000')
     ct_parse=[]#constituency parse tree
-    # dp_parse=[]#dependency parse tree
+    dp_parse=[]#dependency parse tree
 
     tokens = nltk.word_tokenize(uttr)  # Tokenize
     tagged_words = nltk.pos_tag(tokens)  # Tag
     # Get the frequency of every type
-    # pos_freq = defaultdict(int)
-    # for word, wordtype in tagged_words:
-    #     pos_freq[wordtype] += 1
+    pos_freq = defaultdict(int)
+    for word, wordtype in tagged_words:
+        pos_freq[wordtype] += 1
     # return tagged_words,pos_freq,tokens
 
     result=split_string_by_words(uttr, 50)
@@ -82,12 +82,12 @@ def _processUtterance(uttr):
             if 'sentences' in stan_parse and len(stan_parse['sentences'])>0:
                 # print(stan_parse['sentences'][0])
                 ct_parse.append(stan_parse['sentences'][0]["parse"])
-                # dp_parse.append(stan_parse['sentences'][0]["basicDependencies"])
+                dp_parse.append(stan_parse['sentences'][0]["basicDependencies"])
                 # return stan_parse['sentences'][0]["parse"],stan_parse['sentences'][0]["basicDependencies"],tagged_words,pos_freq,tokens
             # return None,None,tagged_words,pos_freq,tokens
 
 
-    return ct_parse,tagged_words,tokens
+    return ct_parse,dp_parse,tagged_words,tokens,pos_freq
 
 def split_string_by_words(sen, n):
     result=[]
@@ -124,7 +124,7 @@ def _parse_corpus(filepath,utt_col,file_col,db):
     # result = {'filename': [],'pos':[],'token':[],'pos_freq':[]}
 
 
-    result = {'filename': [], 'parse_tree': [],'pos':[],'token':[]}
+    result = {'filename': [], 'parse_tree': [],'pos':[],'token':[],'pos_freq':[],'basic_dependencies':[]}
 
     log = open(path+'parse_'+db, 'a+')  # Not using 'with' just to simplify the example REPL session
     parse_tree=[]
@@ -149,14 +149,14 @@ def _parse_corpus(filepath,utt_col,file_col,db):
             uttr=remove_non_ascii(uttr)
 
             try:
-                ct,tagged_word,token=_processUtterance(uttr)
+                ct,dep,tagged_word,token,pos_freq=_processUtterance(uttr)
                 # tagged_word,pos_freq,token=_processUtterance(uttr)
 
                 if tagged_word is not None:
                     parse.append(ct) #constituency parse tree
-                    # dependency.append(dep) # dependenncy parse tree
+                    dependency.append(dep) # dependenncy parse tree
                     tagged_words.append(tagged_word)  # pos tagged words
-                    # pos_freqs.append(pos_freq)  # freq of pos type apperead
+                    pos_freqs.append(pos_freq)  # freq of pos type apperead
                     tokens.append(token)  # tokens
                     # print(tokens)
                     # print(tagged_words)
@@ -201,10 +201,10 @@ def _parse_corpus(filepath,utt_col,file_col,db):
         # result['part_id'].append(row['id'])
 
         result['parse_tree'].append(parse)
-        # result['basic_dependencies'].append(dependency)
+        result['basic_dependencies'].append(dependency)
         result['pos'].append(tagged_words)
         result['token'].append(tokens)
-        # result['pos_freq'].append(pos_freqs)
+        result['pos_freq'].append(pos_freqs)
         # print( result['pos_freq'])
 
 
