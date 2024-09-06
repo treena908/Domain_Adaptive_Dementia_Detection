@@ -1,3 +1,5 @@
+#this code is adapted from: https://github.com/vmasrani/dementia_classifier/tree/master/dementia_classifier
+
 import pandas as pd
 # from sqlalchemy import types
 from cross_validators import DomainAdaptationCV
@@ -17,27 +19,47 @@ import numpy as np
 # =================================================================
 
 def save_domain_adapt_results_to_sql():
-    ######params
+
     # lam=[0.01,0.05,0.1,0.5,0.75,1.0]
+    #  for bias experiments in 5.2 subsection of the ACL2023 paper
+    bias = None  # c=consistent, e=equal, or None ,
+    combination_src = [(72, 28), (57, 43), (42, 58), (28, 72)]  # for cons. bias
+    combination_tgt = [(90, 35), (75, 50), (60, 65), (35, 90)]  # for cons. bias
+    combination_src_eq = [(48, 48)]  # for equal bias
+
+    # combination=[(72,28),(57,43),(42,58),(28,72)]
+    combination = [(None, None)] #no bias condition
+    ############################################
+    #########################parameters###################################
     lam=[0.05]
-    lr=[0.01,0.05,0.1,0.5]
+    lr=[0.01,0.05,0.1,0.5] #learning rate
     # krange=[30,25,20,15,10,40,50]
     krange=None #feat selection
 
     params={'c':[1.0],'lam':lam,'lr':lr}
     # params=[0.3]
 
-    models=['lr']
-    bias='c'#c=consistent, e=equal, or None
-    ling_sem_audio_features=[1,1,0] # which features to use ling, sem, audio
-    # models=['dann']
+    models=['svm','lr']
+
+
+
+    ling_sem_audio_features=[1,1,1] # which features to use linguistic (includes: POS, NER, SUBTL,vocabulary richness, syntactic complexity, CFG features ), semantic (includes: cosine distance related features), audio (prosodic features)
+
 
     adresstest=False #whether to run test on adress test set when source is adress train set
     #if false and target=adress, run cv on adress train set
-    src=['ccc']
-    tgt=['pitt'] #to run 5 fold  cv on adress train, src=ccc, tgt=adress, adresstest=False,
+    # to run 5 fold cv on adress train, src = ccc, tgt = adress, adresstest = False
+    #dataset names={'adress','ccc','db','madress'}
+
+    src=['adrc','ccc'] #source dataset doamin adaptation ( DA) experiment.
+    tgt=['adress'] #target dataset for DA experiment.
     # to train on src ccc, tgt adress train, test on adress test, src=ccc, tgt=adress, adresstest=True
-    dign='ad' #whether dign is mci or not
+    dign='ad' #whether dignosis is Alzheimer's disease/dementia (ad) or mci
+    #different methods including baselines:
+        # 'baseline' (joint training),'source_only','target_only' ,
+        # and DA methods" 'augment','multiaugment', 'dann','fmmd','tradaboost'
+    methods=['baseline','source_only','target_only','augment','multiaugment','tradaboost']
+
     if 'madress' in tgt[0]:
         if not adresstest:
             nfold=8
@@ -53,35 +75,24 @@ def save_domain_adapt_results_to_sql():
 
     else:
         nfold=5
-    #data for training model for DA, source and tgt
-    # Xt, yt,lt, Xs, ys,ls=get_target_source_data(source=['pittad'], target=['pittct'], features=ling_sem_audio_features) #for getting feaure valu groupwise
-    # # Xt.to_pickle(Xt,'../result/augment/pitt_ct.pickle')
+    ################################################################
 
-    #
-    # Xs.to_csv('../result/augment/'+'pitt_ad'+'.csv')
-    # Xt.to_csv('../result/augment/pitt_ct.csv')
-
-
+    #performance metrics
     acc=[]
     f1=[]
 
-    combination_src=[(72,28),(57,43),(42,58),(28,72)] #for cons. bias
-    combination_tgt=[(90,35),(75,50),(60,65),(35,90)] #for cons. bias
-    combination_src_eq=[(48,48)]#for equal bias
-
-    # combination=[(72,28),(57,43),(42,58),(28,72)]
-
-    # combination=[(None,None)]
 
 
-    # for source in zip(combination):
-    for i,source in enumerate(combination_src):
+    for source in zip(combination):
+    # for i,source in enumerate(combination_src):
 
 
         if dign=='mci':
             Xt_con, yt_con, lt_con, Xt_mci, yt_mci, lt_mci, Xs, ys, ls=get_target_source_data(source=src,target=tgt,dign=dign)
         else:
-            Xt, yt,lt, Xs, ys,ls = get_target_source_data(source=src,target=tgt,features=ling_sem_audio_features,dign=dign,k_range=krange,src_pos=source,tgt_pos=combination_tgt[i],bias=bias)
+            # Xt, yt,lt, Xs, ys,ls = get_target_source_data(source=src,target=tgt,features=ling_sem_audio_features,dign=dign,k_range=krange,src_pos=source,tgt_pos=combination_tgt[i],bias=bias)
+            Xt, yt, lt, Xs, ys, ls = get_target_source_data(source=src, target=tgt, features=ling_sem_audio_features, dign=dign,
+                                                    k_range=krange, src_pos=None, tgt_pos=None,bias=bias)
             # dataset_ys = tf.data.Dataset.zip(tuple(
 
                     # X[domains == dom]).repeat(repeats[dom])
@@ -89,11 +100,6 @@ def save_domain_adapt_results_to_sql():
 
 
 
-        # print(len(Xs.columns.tolist()))
-        # print(len(Xt.columns.tolist()))
-        # print(set(Xs.columns.tolist()) - set(Xt.columns.tolist()))
-        # print(set(Xt.columns.tolist()) - set(Xs.columns.tolist()))
-        # print(Xs.columns.tolist())
         if type(Xs) is list:
             print(Xs[0].shape)
             print(Xs[1].shape)
@@ -110,9 +116,9 @@ def save_domain_adapt_results_to_sql():
 
         if not adresstest:
             if dign=='mci':
-                da = DomainAdaptationCV(Xt=Xt_mci, yt=yt_mci, lt=lt_mci, Xs=Xs, ys=ys, ls=ls,Xt_con=Xt_con, yt_con=yt_con, lt_con=lt_con, source=src, target=tgt,nfold=nfold)
+                da = DomainAdaptationCV(methods=methods,Xt=Xt_mci, yt=yt_mci, lt=lt_mci, Xs=Xs, ys=ys, ls=ls,Xt_con=Xt_con, yt_con=yt_con, lt_con=lt_con, source=src, target=tgt,nfold=nfold)
             else:
-                da = DomainAdaptationCV( Xt, yt, lt, Xs, ys, ls,features=Xt.columns.tolist(),source=src,target=tgt,nfold=nfold)
+                da = DomainAdaptationCV(methods=methods, Xt=Xt, yt=yt, lt=lt, Xs=Xs, ys=ys, ls=ls,features=Xt.columns.tolist(),source=src,target=tgt,nfold=nfold)
         else:
             # Xt_test, yt_test, lt_test=get_adress_test_data(target=['madress_test'],dign=dign,features=ling_sem_audio_features,k_range=krange)
 
@@ -121,7 +127,7 @@ def save_domain_adapt_results_to_sql():
             # print(Xt_test.shape)
 
 
-            da = DomainAdaptationCV( Xt, yt, lt, Xs, ys, ls,features=Xt.columns.tolist(),source=src,target=tgt,Xt_test=Xt_test, yt_test=yt_test, lt_test=lt_test,nfold=nfold)
+            da = DomainAdaptationCV( methods=methods,Xt=Xt, yt=yt, lt=lt, Xs=Xs, ys=ys, ls=ls,features=Xt.columns.tolist(),source=src,target=tgt,Xt_test=Xt_test, yt_test=yt_test, lt_test=lt_test,nfold=nfold)
 
 
         for model in models:

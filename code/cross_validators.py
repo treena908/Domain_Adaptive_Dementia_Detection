@@ -1,3 +1,5 @@
+#this code is adapted from: https://github.com/vmasrani/dementia_classifier/tree/master/dementia_classifier
+
 import numpy as np
 import pandas as pd
 from adapt.feature_based import CORAL
@@ -22,7 +24,7 @@ from _tradaboost import TrAdaBoost,TrAdaBoostR2
 import tensorflow as tf
 # from adapt.instance_based import TrAdaBoostR2
 
-import  tensorflow.keras.callbacks as Callback
+#import  tensorflow.keras.callbacks as Callback
 # from tensorflow.keras import Sequential
 # from tensorflow.keras.layers import Input, Dense, Reshape
 # from tensorflow.keras.optimizers import Adam
@@ -77,8 +79,8 @@ class DementiaCV(object):
 
         self.labels = labels
         # self.columns = X.columns
-
-        self.methods = ['default']
+        self.methods = ['multiaugment']
+        # self.methods = ['default']
         self.nfolds = nfold
         # self.source=source
         # self.target=target
@@ -623,7 +625,7 @@ class DomainAdaptationCV(DementiaCV):
     are computed.
     """
 
-    def __init__(self,  Xt, yt,lt, Xs, ys,ls,Xt_con=None, yt_con=None, lt_con=None, silent=False,model=None,source='ccc',target='pitt',features=None,domains=2,Xt_test=None,yt_test=None,lt_test=None, random_state=1,nfold=8):
+    def __init__(self, methods, Xt, yt,lt, Xs, ys,ls,Xt_con=None, yt_con=None, lt_con=None, silent=False,model=None,source='ccc',target='pitt',features=None,domains=2,Xt_test=None,yt_test=None,lt_test=None, random_state=1,nfold=8):
         super(DomainAdaptationCV, self).__init__(model, X=Xt, y=yt,l=lt, silent=silent)
         self.silent = silent
         self.Xt, self.yt,self.lt = Xt, yt,lt  # Save target data + labels
@@ -633,7 +635,7 @@ class DomainAdaptationCV(DementiaCV):
         # self.target_split=0.3
         # self.methods = ['baseline','augment','coral']
         # self.methods =['augment']
-        self.methods = ['target_only']
+        self.methods = methods
 
         # encode class values as integers
         # encoder = LabelEncoder()

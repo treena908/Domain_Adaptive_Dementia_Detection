@@ -1,7 +1,6 @@
 """
 Transfer Adaboost
 """
-####### This code was adapdep from https://github.com/adapt-python/adapt library#################
 
 import numpy as np
 import tensorflow as tf

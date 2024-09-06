@@ -1,3 +1,4 @@
+#this code is adapted from: https://github.com/vmasrani/dementia_classifier/tree/master/dementia_classifier
 import pandas as pd
 import numpy as np
 import itertools
@@ -109,7 +110,7 @@ def get_features(features,db,feat_name=None,k_range=None):
         audio = pd.read_csv(PATH +db+ PATH_TO_AUDIO_FEATURE  + '.csv')#audio
         audio=audio.iloc[:,79:105]
         feat = pd.merge(ling, sem, on=['filename'])
-        feat = pd.merge(feat, audio, on=['filename'])
+
     elif features[0] == 1 and features[1] == 1 and features[2] == 0:
 
         ling = pd.read_csv(PATH + PATH_TO_LINGUISTIC_FEATURE + db + '.csv')
@@ -607,7 +608,9 @@ def get_target_source_data(source=['pitt'],target='ccc',random_state=1,dign='ad'
         return Xt_con, yt_con,lt_con,Xt_mci,yt_mci,lt_mci, Xs, ys,ls
 
     x_s, y_s, l_s = get_data(source, drop_features=True,dign=dign,opt=features,feat_name=source,k_range=k_range,pos_neg=src_pos,bias=bias) #get source data
-    x_t, y_t, l_t = get_data(target, drop_features=True,dign=dign,opt=features,feat_name=source,k_range=k_range,pos_neg=tgt_pos,bias=bias) #get target data
+    x_t, y_t, l_t = get_data(target, drop_features=True,dign=dign,opt=features,feat_name=source,k_range=k_range,pos_neg=tgt_pos,
+
+                             bias=bias) #get target data
     # X_mci, y_mci, l_mci = get_data(diagnosis=MCI, drop_features=feature_set)
 
     # # Split control samples into target/source set (making sure one patient doesn't appear in both t and s)
