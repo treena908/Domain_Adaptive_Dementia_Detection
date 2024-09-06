@@ -1,5 +1,5 @@
 ﻿# Domain_Adaptive_Dementia_Detection
-#preprocessing
+#Data preprocessing
 1. 1. utterance segment the input text (a sample  file name "" is given in 'data' ):
 2. . generate parse tree and pos tags for utterances:
     2.1. run the stanford NLP parser ()
